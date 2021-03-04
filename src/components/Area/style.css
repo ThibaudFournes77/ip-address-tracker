@@ -1,0 +1,14 @@
+.area{
+  border: 1px solid #d1d5da;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.area-center{
+  text-align: center;
+}
+
+.area-left{
+  text-align: left;
+  padding-left: 10px;
+}

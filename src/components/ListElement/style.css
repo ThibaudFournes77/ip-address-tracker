@@ -1,0 +1,9 @@
+.elem{
+  background-color: #e1e4e8;
+  padding: 5px;
+  color: #4488d6;
+  width: 75%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+}
