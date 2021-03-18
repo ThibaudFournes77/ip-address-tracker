@@ -1,5 +1,6 @@
 import React from 'react';
 import Leaflet from 'leaflet';
+import {latLngBounds} from 'leaflet'
 import { MapContainer, TileLayer, Marker } from 'react-leaflet';
 import iconLocation from 'src/assets/images/icon-location.svg';
 
@@ -15,15 +16,17 @@ const iconMarker = Leaflet.icon({
     shadowAnchor: null
 })
 
-function Map() {
+function Map({lat, lng, onMapCreated}) {
+    const coordinates = [lat, lng];
+    const bounds = latLngBounds(coordinates);
     return (
         <div className="map__container">
-            <MapContainer center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false}>
+            <MapContainer center={[lat, lng]} zoom={13} whenCreated={map => onMapCreated(map)}>
                 <TileLayer
                     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
-                <Marker position={[51.505, -0.09]} icon={iconMarker} />
+                <Marker position={coordinates} icon={iconMarker} />
             </MapContainer>
         </div>
     );
