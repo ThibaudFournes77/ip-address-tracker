@@ -1,30 +1,21 @@
 // == Import npm
 import React from 'react';
+import Header from 'src/components/Header';
+import Infos from 'src/components/Infos';
+import Map from 'src/components/Map';
 
 // == Import
-import './styles.css';
-import Area from '../Area';
-import ListElement from '../ListElement';
+import './style.scss';
 
 // == Composant
 const App = () => (
   <div className="app">
-    <Area className="area area-center">
-      <h2>Titre du header</h2>
-    </Area>
-    <Area className="area area-left">
-      <h2>Titre du main</h2>
-      <p>Liste de courses dans main</p>
-      <ul>
-        <ListElement>oeuf</ListElement>
-        <ListElement>lait</ListElement>
-        <ListElement>farine</ListElement>
-      </ul>
-    </Area>
-    <Area className="area area-center">
-      <h2>Titre du footer</h2>
-      <p>Texte du footer</p>
-    </Area>
+    <header className="header">
+        <h1 className="header__title">IP Address Tracker</h1>
+        <Header />
+        <Infos />
+    </header>
+    <Map />
   </div>
 );
 
