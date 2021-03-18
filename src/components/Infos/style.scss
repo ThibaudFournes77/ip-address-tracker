@@ -10,6 +10,7 @@
     align-items: center;
     border-radius: 10px;
     padding: 5% 0;
+    z-index: 999;
 
     &__title{
         font-size: 12px;
@@ -27,28 +28,40 @@
 @media screen and (min-width: 768px){
     .infos{
         flex-direction: row;
-        height: 20vh;
+        height: 15vh;
         bottom: -30%;
         padding: 0 5%;
 
+        &__title{
+            margin-bottom: 20px;
+        }
+
         &__ip-address{
+            width: 50%;
+            height: 40%;
             padding-right: 5%;
             border-right: 1px solid #ccc;
         }
 
         &__location{
+            width: 50%;
+            height: 40%;
             padding-left: 5%;
             padding-right: 5%;
             border-right: 1px solid #ccc;
         }
 
         &__timezone{
+            width: 50%;
+            height: 40%;
             padding-left: 5%;
             padding-right: 5%;
             border-right: 1px solid #ccc;
         }
 
         &__isp{
+            width: 50%;
+            height: 40%;
             padding-left: 5%;
         }
     }
