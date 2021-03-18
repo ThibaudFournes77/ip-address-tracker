@@ -19,9 +19,11 @@ const App = () => {
   const [lat, setLat] = useState(51.505);
   const [lng, setLng] = useState(-0.09);
   const [map, setMap] = useState();
+  const [loading, setLoading] = useState(false);
 
   const loadData = async () => {
     try{
+      setLoading(true);
       const api_key = process.env.API_KEY;
       const infoIPAddress = await axios.get(`https://geo.ipify.org/api/v1?apiKey=${api_key}&ipAddress=${searchedIp}`);
       const ispData = infoIPAddress.data.isp;
@@ -34,8 +36,10 @@ const App = () => {
       setIsp(ispData);
       setLat(latAPI);
       setLng(lngAPI);
+      setLoading(false);
     } catch(error){
       console.log(error);
+      setLoading(false);
     }
     
   }
@@ -64,12 +68,17 @@ const App = () => {
 
   return (
     <div className="app">
-      <header className="header">
-          <h1 className="header__title">IP Address Tracker</h1>
-          <Header onChangeInputValue={onChangeinputValue} value={inputValue} onFormSubmit={onFormSubmit} />
-          <Infos location={location} timezone={timezone} isp={isp} ip={ip} />
-      </header>
-      <Map lat={lat} lng={lng} onMapCreated={onMapCreated} />
+      {!loading &&
+      (
+      <>
+        <header className="header">
+            <h1 className="header__title">IP Address Tracker</h1>
+            <Header onChangeInputValue={onChangeinputValue} value={inputValue} onFormSubmit={onFormSubmit} />
+            <Infos location={location} timezone={timezone} isp={isp} ip={ip} />
+        </header>
+        <Map lat={lat} lng={lng} onMapCreated={onMapCreated} />
+      </>
+      )}
     </div>
   );
 }
